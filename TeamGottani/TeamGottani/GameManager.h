@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "IAnimalFactroy.h"
 
 class GameManager
 {
@@ -9,7 +10,7 @@ public:
 	private:
 	GameManager();
 	~GameManager();
-	std::unique_ptr<AnimalFactroy> _factory;
-	std::unique_ptr<GameObject> _player;
+	std::unique_ptr<IAnimalFactory> _factory;
+	std::unique_ptr<Player> _player;
 
 };
