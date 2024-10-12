@@ -1,7 +1,7 @@
 ﻿#include "stdafx.h"
 #include "Player.h"
 
-void Player::update()
+void Player::Update()
 {
 	Vec2 pos = Scene::Center();
 

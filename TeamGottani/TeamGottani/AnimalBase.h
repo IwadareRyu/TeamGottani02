@@ -18,14 +18,14 @@ public:
 	}
 
 	// スコアを取得
-	int getScore() const;
+	int GetScore() const;
 
 	// サイズを取得
-	float getSize() const;
+	float GetSize() const;
 
 	// 画像を取得
-	Image getImage() const;
+	Image GetImage() const;
 
 	// 接触判定（仮の実装）
-	virtual bool checkCollision(const Animal& other) const;
+	virtual bool CheckCollision(const Animal& other) const;
 };
