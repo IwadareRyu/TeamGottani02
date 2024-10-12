@@ -1,7 +1,9 @@
 ﻿#pragma once
+#include "AnimalBase.h"
 
-class IAnimalFactroy
-{
+// IAnimalFactoryインターフェース
+class IAnimalFactory {
 public:
-	
+	virtual ~IAnimalFactory() = default;
+	virtual std::unique_ptr<Animal> createAnimal() const = 0;
 };
