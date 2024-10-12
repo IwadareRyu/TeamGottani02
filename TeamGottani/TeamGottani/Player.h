@@ -3,5 +3,5 @@
 class Player
 {
 public:
-	static void update();
+	static void Update();
 };

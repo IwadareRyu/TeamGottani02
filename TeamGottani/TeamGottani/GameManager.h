@@ -1,12 +1,15 @@
 ﻿#pragma once
 #include "IAnimalFactroy.h"
+#include "Player.h"
+#include "Singleton.h"
 
-class GameManager
+class GameManager :public Singleton<GameManager>
 {
 public:
-	void start();
-	void update();
-	void draw();
+	void Awake();
+	void Start();
+	void Update();
+	void Draw();
 	private:
 	GameManager();
 	~GameManager();
