@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "AnimalBase.h"
 
 // IAnimalFactoryインターフェース
 class IAnimalFactory {
