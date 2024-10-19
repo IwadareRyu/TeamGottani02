@@ -5,7 +5,7 @@
 #include "Animal/AnimalCollection.h"
 // GameManagerのコンストラクタ
 GameManager::GameManager()
-	: _factory(nullptr), _player(nullptr) // 初期化リストでメンバ変数を初期化
+	: _player(nullptr) // 初期化リストでメンバ変数を初期化
 {
 }
 
