@@ -18,7 +18,11 @@ public:
 	{
 	}
 
+	// 位置を取得する関数
 	Vec3 GetPosition() const;
+
+	// 位置を設定する関数
+	void SetPosition(const Vec3& position);
 
 	// 画像を取得
 	Image GetImage() const;

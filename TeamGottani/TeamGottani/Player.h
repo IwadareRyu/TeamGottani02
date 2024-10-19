@@ -30,4 +30,6 @@ public:
 	{
 		current_animal_ = std::move(animal);
 	}
+	// プレイヤーの現在位置を取得
+	const Vec2& GetPosition() const { return pos_; }
 };

@@ -11,9 +11,15 @@ float Animal::GetSize() const
 	return size_;
 }
 
+
 Vec3 Animal::GetPosition() const
 {
 	return position_;
+}
+
+void Animal::SetPosition(const Vec3& position)
+{
+	position_ = position;
 }
 
 Image Animal::GetImage() const

@@ -5,7 +5,7 @@
 
 void Player::Start()
 {
-	pos_ = Scene::Center();  // プレイヤーの初期位置を中央に設定
+	pos_ = Scene::Center(); // プレイヤーの初期位置を中央に設定
 }
 
 void Player::Update()
@@ -42,11 +42,11 @@ void Player::Update()
 	// [スペース] キーが押されたら動物をドロップする
 	if (KeySpace.down())
 	{
-		DropAnimal();  // 動物を落とす処理
+		DropAnimal(); // 動物を落とす処理
 	}
 
 	// プレイヤーの描画
-	Circle{ pos_, 50 }.draw();
+	Circle{pos_, 50}.draw();
 }
 
 void Player::Draw() const
@@ -62,7 +62,11 @@ void Player::DropAnimal()
 {
 	if (current_animal_)
 	{
-		// ステージに動物を追加して、プレイヤーの動物をクリアする
+		// プレイヤーの位置を使用して動物をステージに追加
+		Vec3 animal_position(pos_.x, pos_.y, 0); // プレイヤーの現在位置から生成
+		current_animal_->SetPosition(animal_position); // 動物の位置を設定
+
+		// ステージに動物を追加し、プレイヤーの動物をクリア
 		stage_->AddAnimalToStage(std::move(current_animal_));
 	}
 }
