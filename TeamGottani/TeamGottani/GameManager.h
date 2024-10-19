@@ -25,6 +25,7 @@ public:
 
 
 private:
-	std::unique_ptr<Player> _player;
-	AnimalCollection _collection;
+	std::unique_ptr<Player> _player;  // プレイヤー
+	AnimalCollection _collection;     // 動物コレクション
+	std::unique_ptr<Stage> _stage;    // ステージ
 };
