@@ -1,40 +1,32 @@
 ﻿#include "Stage.h"
-
 #include "GameManager.h"
 #include "Animal/AnimalCat.h"
 
 Stage::Stage()
-	: dropZone_(RectF(300, 500, 200, 50)) // 仮の位置とサイズ
-	  , borderLine_(Line(0, 600, 800, 600)), player_()
-// ボーダーラインの定義
+	: drop_zone_(RectF(300, 500, 200, 50)), // 仮の位置とサイズ
+	  border_line_(Line(0, 600, 800, 600)),
+	  player_(this)  // Stageポインタを渡してPlayerを初期化
 {
 }
 
 void Stage::Initialize()
 {
-	// 初期化処理
-	GenerateNextAnimal(); // 次の動物を生成
+	GenerateNextAnimal();
+	player_.SetAnimal(std::move(next_animal_));
 }
 
 void Stage::Update()
 {
-	player_.Update(); // プレイヤーの更新
+	player_.Update();  // プレイヤーの更新
 
-	// 動物の更新
-	animalContainer_.UpdateAnimals();
-
-	// 動物をドロップできる場所の判定
-	// if (/* プレイヤーが動物を落とすアクション */)
-	// {
-	// 	DropAnimal();
-	// }
+	// 他の動物の更新処理
+	animal_container_.UpdateAnimals();
 
 	// ボーダーラインを超えた動物をチェック
-	for (const auto& animal : animalContainer_.GetAnimals())
+	for (const auto& animal : animal_container_.GetAnimals())
 	{
 		if (IsAnimalBeyondBorder(*animal))
 		{
-			// ボーダーラインを超えた動物がいた場合の処理
 			GameManager::GetInstance()->GameEnd();
 		}
 	}
@@ -42,41 +34,40 @@ void Stage::Update()
 
 void Stage::Draw() const
 {
-	// ステージの要素を描画
-	dropZone_.draw(ColorF(0.2, 0.8, 0.2, 0.5)); // 動物を落とせる場所
-	borderLine_.draw(ColorF(0.8, 0.1, 0.1)); // ボーダーライン
+	drop_zone_.draw(ColorF(0.2, 0.8, 0.2, 0.5));
+	border_line_.draw(ColorF(0.8, 0.1, 0.1));
 
-	// 動物の描画
-	animalContainer_.DrawAnimals();
+	animal_container_.DrawAnimals();
 
-	// 次の動物の描画
-	if (nextAnimal_)
+	if (next_animal_)
 	{
-		nextAnimal_->Draw();
+		next_animal_->Draw();
 	}
 
-	// プレイヤーの描画
 	player_.Draw();
 }
 
-void Stage::DropAnimal()
+void Stage::AddAnimalToStage(std::unique_ptr<Animal> animal)
 {
-	// 次の動物をコンテナに追加
-	if (nextAnimal_)
-	{
-		animalContainer_.AddAnimal(std::move(nextAnimal_));
-		GenerateNextAnimal(); // 次の動物を生成
-	}
+	animal_container_.AddAnimal(std::move(animal));
+	GenerateNextAnimal();  // 次の動物を生成
+	player_.SetAnimal(std::move(next_animal_));
 }
 
 bool Stage::IsAnimalBeyondBorder(const Animal& animal) const
 {
 	// 動物がボーダーラインより下に落ちたかを判定
-	return animal.GetSize() + animal.GetPosition().y > borderLine_.begin.y;
+	return animal.GetSize() + animal.GetPosition().y > border_line_.begin.y;
 }
 
 void Stage::GenerateNextAnimal()
 {
 	// サンプルとして猫を生成
-	nextAnimal_ = std::make_unique<AnimalCat>(10, 10, Image(U"cat.png"));
+	Vec3 position = { 100, 200, 0 };  // 仮の位置
+	Image image = Image(U"cat.png");  // 仮の画像
+	int score = 10;                   // 仮のスコア
+	float size = 20.0f;               // 仮のサイズ
+
+	next_animal_ = std::make_unique<AnimalCat>(position, image, score, size);
 }
+
