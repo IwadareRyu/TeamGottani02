@@ -4,12 +4,10 @@
 
 void Main()
 {
-
 	GameManager::GetInstance()->Start();
 	while (System::Update())
 	{
 		GameManager::GetInstance()->Update();
 		GameManager::GetInstance()->Draw();
 	}
-
 }

@@ -2,7 +2,6 @@
 #include "Player.h"
 #include "Singleton.h"
 #include "Animal/AnimalCollection.h"
-#include "Animal/IAnimalFactroy.h"
 
 class GameManager : public Singleton<GameManager>
 {
@@ -15,10 +14,17 @@ public:
 	void Update();
 	void Draw();
 
+	void GameStart();
+	void GameEnd();
+	void GameRestart();
+	void GamePause();
+	void GameResume();
+
+	void GameStop();
+	void GameTitle();
 
 
 private:
-	std::unique_ptr<IAnimalFactory> _factory;
 	std::unique_ptr<Player> _player;
 	AnimalCollection _collection;
 };
