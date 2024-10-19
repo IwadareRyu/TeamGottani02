@@ -1,7 +1,8 @@
 ﻿#pragma once
-#include "IAnimalFactroy.h"
 #include "Player.h"
 #include "Singleton.h"
+#include "Animal/AnimalCollection.h"
+#include "Animal/IAnimalFactroy.h"
 
 class GameManager : public Singleton<GameManager>
 {
@@ -17,4 +18,5 @@ public:
 private:
 	std::unique_ptr<IAnimalFactory> _factory;
 	std::unique_ptr<Player> _player;
+	AnimalCollection _collection;
 };

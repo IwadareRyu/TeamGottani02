@@ -1,4 +1,4 @@
-﻿#include "stdafx.h"
+﻿#include "../stdafx.h"
 #include "AnimalBase.h"
 
 int Animal::GetScore() const

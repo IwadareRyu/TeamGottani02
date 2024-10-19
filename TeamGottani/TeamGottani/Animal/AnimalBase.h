@@ -28,4 +28,9 @@ public:
 
 	// 接触判定（仮の実装）
 	virtual bool CheckCollision(const Animal& other) const;
+
+	// 仮想関数
+	virtual void Start() = 0;
+	virtual void Update() = 0;
+	virtual void Draw() const = 0;
 };
