@@ -39,3 +39,7 @@ void Player::Update()
 
 	Circle{pos_, 50}.draw();
 }
+
+void Player::Draw() const
+{
+}
