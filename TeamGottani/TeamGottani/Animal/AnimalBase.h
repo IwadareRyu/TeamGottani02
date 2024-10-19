@@ -4,18 +4,24 @@
 class Animal
 {
 protected:
+	Vec3 position_;
+	Image image_;
 	int score_;
 	float size_;
-	Image image_;
 
 public:
 	virtual ~Animal() = default;
 
 	// スコア、サイズ、画像を設定
-	Animal(const int score, const float size, const Image& image)
-		: score_(score), size_(size), image_(image)
+	Animal(const Vec3& position, const Image& image, const int score, const float size)
+		: position_(position), image_(image), score_(score), size_(size)
 	{
 	}
+
+	Vec3 GetPosition() const;
+
+	// 画像を取得
+	Image GetImage() const;
 
 	// スコアを取得
 	int GetScore() const;
@@ -23,8 +29,6 @@ public:
 	// サイズを取得
 	float GetSize() const;
 
-	// 画像を取得
-	Image GetImage() const;
 
 	// 接触判定（仮の実装）
 	virtual bool CheckCollision(const Animal& other) const;
