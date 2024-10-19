@@ -19,6 +19,9 @@ public:
 	// コレクション内の動物を全て取得
 	const std::vector<std::unique_ptr<Animal>>& GetAnimals() const;
 
+
+	void StartAnimals();
+
 	// コレクション内の動物を更新
 	void UpdateAnimals();
 

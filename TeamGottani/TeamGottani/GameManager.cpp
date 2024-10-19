@@ -12,12 +12,12 @@ GameManager::GameManager()
 // GameManagerのデストラクタ
 GameManager::~GameManager()
 {
-	// 必要なクリーンアップ処理があればここに書く
 }
 
 void GameManager::Awake()
 {
 	// 初期化処理
+	_collection.StartAnimals();
 }
 
 void GameManager::Start()
@@ -25,15 +25,20 @@ void GameManager::Start()
 	// ゲーム開始処理
 	_player = std::make_unique<Player>();
 	// 動物を作成してコレクションに追加
-	_collection.AddAnimal(std::make_unique<AnimalCat>());
+	_collection.AddAnimal(std::make_unique<AnimalCat>(10, 10, Image(U"cat.png")));
+	_collection.AddAnimal(std::make_unique<AnimalCat>(100, 15, Image(U"cat.png")));
+	_collection.AddAnimal(std::make_unique<AnimalCat>(1000, 20, Image(U"cat.png")));
+	_collection.AddAnimal(std::make_unique<AnimalCat>(10000, 25, Image(U"cat.png")));
 }
 
 void GameManager::Update()
 {
 	// 毎フレームの更新処理
+	_collection.UpdateAnimals();
 }
 
 void GameManager::Draw()
 {
 	// 描画処理
+	_collection.DrawAnimals();
 }

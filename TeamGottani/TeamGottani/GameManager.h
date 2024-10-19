@@ -15,6 +15,8 @@ public:
 	void Update();
 	void Draw();
 
+
+
 private:
 	std::unique_ptr<IAnimalFactory> _factory;
 	std::unique_ptr<Player> _player;

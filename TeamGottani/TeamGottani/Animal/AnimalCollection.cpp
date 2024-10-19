@@ -12,10 +12,19 @@ const std::vector<std::unique_ptr<Animal>>& AnimalCollection::GetAnimals() const
 	return animals_;
 }
 
+void AnimalCollection::StartAnimals()
+{
+	for (const auto& animal : animals_)
+	{
+		// 各動物に対して、初期化
+		animal->Start();
+	}
+}
+
 // コレクション内の動物を更新
 void AnimalCollection::UpdateAnimals()
 {
-	for (auto& animal : animals_)
+	for (const auto& animal : animals_)
 	{
 		// 各動物に対して、更新処理を追加
 		animal->Update();

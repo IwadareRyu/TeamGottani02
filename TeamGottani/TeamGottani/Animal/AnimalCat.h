@@ -8,4 +8,17 @@ public:
 		: Animal(score, size, image)
 	{
 	}
+
+	void Start() override
+	{
+	}
+
+	void Update() override
+	{
+	}
+
+	void Draw() const override
+	{
+		Circle{Scene::Center(), size_}.draw();
+	}
 };
