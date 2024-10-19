@@ -12,7 +12,7 @@ const std::vector<std::unique_ptr<Animal>>& AnimalCollection::GetAnimals() const
 	return animals_;
 }
 
-void AnimalCollection::StartAnimals()
+void AnimalCollection::StartAnimals() const
 {
 	for (const auto& animal : animals_)
 	{
@@ -22,7 +22,7 @@ void AnimalCollection::StartAnimals()
 }
 
 // コレクション内の動物を更新
-void AnimalCollection::UpdateAnimals()
+void AnimalCollection::UpdateAnimals() const
 {
 	for (const auto& animal : animals_)
 	{

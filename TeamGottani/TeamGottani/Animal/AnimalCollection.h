@@ -20,10 +20,10 @@ public:
 	const std::vector<std::unique_ptr<Animal>>& GetAnimals() const;
 
 
-	void StartAnimals();
+	void StartAnimals() const;
 
 	// コレクション内の動物を更新
-	void UpdateAnimals();
+	void UpdateAnimals() const;
 
 	// コレクション内の動物を描画
 	void DrawAnimals() const;
