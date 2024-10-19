@@ -1,4 +1,4 @@
-﻿#include "stdafx.h"
+﻿#include "../stdafx.h"
 #include "AnimalBase.h"
 
 int Animal::GetScore() const
@@ -18,6 +18,6 @@ Image Animal::GetImage() const
 
 bool Animal::CheckCollision(const Animal& other) const
 {
-	// 簡単な距離ベースの接触判定（例）
+	// 簡単な距離ベースの接触判定
 	return std::abs(size_ - other.GetSize()) < 5.0;
 }
