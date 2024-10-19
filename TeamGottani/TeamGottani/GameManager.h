@@ -14,6 +14,14 @@ public:
 	void Update();
 	void Draw();
 
+	void GameStart();
+	void GameEnd();
+	void GameRestart();
+	void GamePause();
+	void GameResume();
+
+	void GameStop();
+	void GameTitle();
 
 
 private:
