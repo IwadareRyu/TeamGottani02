@@ -1,15 +1,30 @@
 ﻿#pragma once
+#include "Player.h"
+#include "Singleton.h"
+#include "Animal/AnimalCollection.h"
 
-class GameManager
+class GameManager : public Singleton<GameManager>
 {
 public:
-	void start();
-	void update();
-	void draw();
-	private:
 	GameManager();
 	~GameManager();
-	std::unique_ptr<AnimalFactroy> _factory;
-	std::unique_ptr<GameObject> _player;
 
+	void Awake();
+	void Start();
+	void Update();
+	void Draw();
+
+	void GameStart();
+	void GameEnd();
+	void GameRestart();
+	void GamePause();
+	void GameResume();
+
+	void GameStop();
+	void GameTitle();
+
+
+private:
+	std::unique_ptr<Player> _player;
+	AnimalCollection _collection;
 };

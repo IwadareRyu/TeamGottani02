@@ -1,41 +1,41 @@
 ﻿#include "stdafx.h"
 #include "Player.h"
 
-void Player::update()
+void Player::Start()
 {
-	Vec2 pos = Scene::Center();
+	pos_ = Scene::Center();
+}
 
-	while (System::Update())
+void Player::Update()
+{
+	const double delta = (Scene::DeltaTime() * 200);
+
+	// 上下左右キーで移動
+	if (KeyLeft.pressed() && KeyA.down())
 	{
-		const double delta = (Scene::DeltaTime() * 200);
-
-		// 上下左右キーで移動
-		if (KeyLeft.pressed() && KeyA.down())
-		{
-			pos.x -= delta;
-		}
-
-		if (KeyRight.pressed() && KeyD.down())
-		{
-			pos.x += delta;
-		}
-
-		if (KeyUp.pressed() && KeyW.down())
-		{
-			pos.y -= delta;
-		}
-
-		if (KeyDown.pressed() && KeyS.down())
-		{
-			pos.y += delta;
-		}
-
-		// [C] キーが押されたら中央に戻る
-		if (KeyC.down())
-		{
-			pos = Scene::Center();
-		}
-
-		Circle{pos, 50}.draw();
+		pos_.x -= delta;
 	}
+
+	if (KeyRight.pressed() && KeyD.down())
+	{
+		pos_.x += delta;
+	}
+
+	if (KeyUp.pressed() && KeyW.down())
+	{
+		pos_.y -= delta;
+	}
+
+	if (KeyDown.pressed() && KeyS.down())
+	{
+		pos_.y += delta;
+	}
+
+	// [C] キーが押されたら中央に戻る
+	if (KeyC.down())
+	{
+		pos_ = Scene::Center();
+	}
+
+	Circle{pos_, 50}.draw();
 }

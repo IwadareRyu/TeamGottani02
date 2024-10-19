@@ -8,7 +8,7 @@ class Singleton
 {
 public:
 	// インスタンスを取得する
-	static T* getInstance()
+	static T* GetInstance()
 	{
 		static T* instance = nullptr; // スレッドセーフなシングルトン
 		if (!instance)instance = new T();
@@ -18,7 +18,7 @@ public:
 	// インスタンスを破棄する
 	static void destroyInstance()
 	{
-		delete getInstance();
+		delete GetInstance();
 	}
 
 protected:

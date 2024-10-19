@@ -3,5 +3,10 @@
 class Player
 {
 public:
-	static void update();
+	void Start();
+	void Update();
+
+private:
+	Image image_;
+	Vec2 pos_;
 };
