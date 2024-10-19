@@ -5,6 +5,7 @@ class Player
 public:
 	void Start();
 	void Update();
+	void Draw() const;
 
 private:
 	Image image_;
