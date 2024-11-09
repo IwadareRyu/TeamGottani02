@@ -3,6 +3,7 @@
 
 SceneController::SceneController() : m_sceneState(SceneState::TitleScene), rect({ 0,0,1920,1080 }), m_currentTime(0.f)
 {
+
 };
 
 SceneController::~SceneController()
@@ -36,6 +37,9 @@ void SceneController::FadeOut(float time)
 	return;
 }
 
+/// @brief シーンを変えるときに呼ぶ関数
+/// @param sceneState 
+/// @param isFade 
 void SceneController::ChangeScene(SceneState sceneState, bool isFade)
 {
 	if (m_isFade) return;
@@ -52,6 +56,7 @@ void SceneController::ChangeScene(SceneState sceneState, bool isFade)
 	}
 };
 
+/// @brief Fade時のUpdate
 void SceneController::FadeUpdate()
 {
 	if (m_isFade)

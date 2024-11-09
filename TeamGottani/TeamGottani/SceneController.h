@@ -16,13 +16,13 @@ private:
 	float m_fadeTime = 1.0f;
 	float m_currentTime;
 	Rect rect;
+	void FadeIn(float time);
+	void FadeOut(float time);
 public:
 	SceneController();
 	~SceneController();
 	constexpr SceneState M_Scene() { return m_sceneState; }
 	void ChangeScene(SceneState sceneState, bool isFade = true);
 	void FadeUpdate();
-	void FadeIn(float time);
-	void FadeOut(float time);
 };
 
