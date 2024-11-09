@@ -21,6 +21,7 @@ private:
 public:
 	SceneController();
 	~SceneController();
+	/// @brief 現在のシーン参照 
 	constexpr SceneState M_Scene() { return m_sceneState; }
 	void ChangeScene(SceneState sceneState, bool isFade = true);
 	void FadeUpdate();
