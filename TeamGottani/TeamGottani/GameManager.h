@@ -6,6 +6,19 @@
 class GameManager : public Singleton<GameManager>
 {
 public:
+	enum TextureIndex {
+		elephant,  //ゾウ
+		giraffe,   //キリン
+		hippo,     //カバ
+		monkey,    //サル
+		panda,     //パンダ
+		parrot,    //トリ
+		penguin,   //ペンギン
+		pig,       //ブタ
+		rabbit,    //ウサギ
+		snake,     //ヘビ
+	};
+
 	GameManager();
 	~GameManager();
 
@@ -28,4 +41,6 @@ private:
 	std::unique_ptr<Player> _player;  // プレイヤー
 	AnimalCollection _collection;     // 動物コレクション
 	std::unique_ptr<Stage> _stage;    // ステージ
+	PhysicsManager physics_manager;
+	Array<Texture> textures_;
 };

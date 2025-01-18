@@ -4,6 +4,7 @@
 #include "Stage.h"
 #include "Animal/AnimalCat.h"
 #include "Animal/AnimalCollection.h"
+#include "Animal/PhysicsManager.h"
 
 // GameManagerのコンストラクタ
 GameManager::GameManager()
@@ -37,6 +38,14 @@ void GameManager::Start()
 	_collection.AddAnimal(std::make_unique<AnimalCat>(Vec3(300, 100, 0), Image(U"cat.png"), 1000, 20.0f));
 	_collection.AddAnimal(std::make_unique<AnimalCat>(Vec3(400, 100, 0), Image(U"cat.png"), 10000, 25.0f));
 
+	FilePathView directory = U"AnimalTexture";
+	for (const auto& path : FileSystem::DirectoryContents(directory)) {
+		const s3d::String extension = FileSystem::Extension(path);
+		if (FileSystem::IsFile(path) && extension.lowercased() == U"png") {
+			textures_.emplace_back(path);
+		}
+	}
+
 	// ステージの初期化
 	_stage->Initialize();
 }
@@ -48,6 +57,15 @@ void GameManager::Update()
 
 	// 毎フレームの動物の更新処理
 	_collection.UpdateAnimals();
+
+	if (MouseL.down()) {
+		if (MouseL.down()) {
+			Animal* newAnimal = new AnimalCat(Cursor::Pos(), textures_[GameManager::TextureIndex::snake], 10, 10);
+			physics_manager.CreateBall(newAnimal);
+		}
+	}
+	physics_manager.HandleCollisions();
+	physics_manager.Draw();
 
 	// ステージの更新処理
 	_stage->Update();

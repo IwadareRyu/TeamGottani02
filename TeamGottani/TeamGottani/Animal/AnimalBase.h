@@ -5,7 +5,7 @@ class Animal
 {
 protected:
 	Vec3 position_;
-	Image image_;
+	Texture image_;
 	int score_;
 	float size_;
 
@@ -13,7 +13,7 @@ public:
 	virtual ~Animal() = default;
 
 	// スコア、サイズ、画像を設定
-	Animal(const Vec3& position, const Image& image, const int score, const float size)
+	Animal(const Vec3& position, const Texture& image, const int score, const float size)
 		: position_(position), image_(image), score_(score), size_(size)
 	{
 	}
@@ -39,6 +39,6 @@ public:
 
 	// 仮想関数
 	virtual void Start() = 0;
-	virtual void Update() = 0;
+	virtual void Update(Vec2 setPos) = 0;
 	virtual void Draw() const = 0;
 };

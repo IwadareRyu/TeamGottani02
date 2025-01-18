@@ -72,7 +72,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <DisableSpecificWarnings>26451;26812;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <ForcedIncludeFiles>stdafx.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <BuildStlModules>false</BuildStlModules>
     </ClCompile>
@@ -195,6 +195,7 @@
     </ClCompile>
     <ClCompile Include="Animal\AnimalCat.cpp" />
     <ClCompile Include="Animal\AnimalCollection.cpp" />
+    <ClCompile Include="Animal\PhysicsManager.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -412,6 +413,7 @@
     <ClInclude Include="Animal\AnimalBase.h" />
     <ClInclude Include="Animal\AnimalCat.h" />
     <ClInclude Include="Animal\AnimalCollection.h" />
+    <ClInclude Include="Animal\PhysicsManager.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Singleton.h" />

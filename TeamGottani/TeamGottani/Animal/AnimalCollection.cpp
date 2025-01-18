@@ -27,7 +27,7 @@ void AnimalCollection::UpdateAnimals() const
 	for (const auto& animal : animals_)
 	{
 		// 各動物に対して、更新処理を追加
-		animal->Update();
+		//animal->Update();
 	}
 }
 
